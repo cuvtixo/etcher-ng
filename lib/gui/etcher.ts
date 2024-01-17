@@ -23,6 +23,7 @@ declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 import * as electron from 'electron';
 import * as remoteMain from '@electron/remote/main';
 import { autoUpdater } from 'electron-updater';
+import * as electronLog from 'electron-log';
 import { promises as fs } from 'fs';
 import { platform } from 'os';
 import * as path from 'path';
@@ -50,6 +51,9 @@ let packageUpdated = false;
 let mainWindow: any = null;
 
 remoteMain.initialize();
+
+// Restrict main.log size to 100Kb
+electronLog.transports.file.maxSize = 1024 * 100;
 
 async function checkForUpdates(interval: number) {
 	// We use a while loop instead of a setInterval to preserve
@@ -161,12 +165,12 @@ async function createMainWindow() {
 		frame: !fullscreen,
 		useContentSize: true,
 		show: false,
-		resizable: false,
+		resizable: true,
 		maximizable: false,
 		fullscreen,
 		fullscreenable: fullscreen,
 		kiosk: fullscreen,
-		autoHideMenuBar: true,
+		autoHideMenuBar: false,
 		titleBarStyle: 'hiddenInset',
 		icon: path.join(__dirname, 'media', 'icon.png'),
 		darkTheme: true,
@@ -174,6 +178,8 @@ async function createMainWindow() {
 			backgroundThrottling: false,
 			nodeIntegration: true,
 			contextIsolation: false,
+			devTools: true,
+			experimentalFeatures: true,
 			webviewTag: true,
 			zoomFactor: width / defaultWidth,
 			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,

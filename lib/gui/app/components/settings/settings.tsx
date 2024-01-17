@@ -134,6 +134,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 					mt={18}
 					alignItems="center"
 					color="#00aeef"
+					title="View Changelog"
 					style={{
 						width: 'fit-content',
 						cursor: 'pointer',

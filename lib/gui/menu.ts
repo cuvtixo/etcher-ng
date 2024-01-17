@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
+import * as path from 'path';
 import * as electron from 'electron';
+import * as electronLog from 'electron-log';
+import { open as openInternal } from './app/os/open-internal/services/open-internal';
 import { displayName } from '../../package.json';
 
 import * as i18next from 'i18next';
@@ -47,15 +50,8 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			label: i18next.t('menu.edit'),
 		},
 		{
+			role: 'viewMenu',
 			label: i18next.t('menu.view'),
-			submenu: [
-				{
-					label: i18next.t('menu.devTool'),
-					accelerator:
-						process.platform === 'darwin' ? 'Command+Alt+I' : 'Control+Shift+I',
-					click: toggleDevTools,
-				},
-			],
 		},
 		{
 			role: 'windowMenu',
@@ -68,25 +64,63 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 				{
 					label: i18next.t('menu.pro'),
 					click() {
-						electron.shell.openExternal(
-							'https://etcher.io/pro?utm_source=etcher_menu&ref=etcher_menu',
-						);
+						openInternal('https://www.balena.io/etcher-pro?utm_source=etcher_menu&ref=etcher_menu');
 					},
 				},
 				{
 					label: i18next.t('menu.website'),
 					click() {
-						electron.shell.openExternal('https://etcher.io?ref=etcher_menu');
+						openInternal('https://etcher.balena.io?ref=etcher_menu');
 					},
 				},
 				{
 					label: i18next.t('menu.issue'),
 					click() {
-						electron.shell.openExternal(
-							'https://github.com/balena-io/etcher/issues',
-						);
+						openInternal('https://github.com/balena-io/etcher/issues');
 					},
 				},
+				{
+					label: i18next.t('menu.gpu'),
+					accelerator: 'CmdorCtrl+Alt+G',
+					click() {
+						electronLog.info('Opening chrome://gpu');
+						openInternal('chrome://gpu');
+					}
+				},
+				{
+					label: 'Open Test Window',
+					accelerator: 'CmdorCtrl+N',
+					click() {
+						electronLog.info('Opening Test Window');
+						openInternal('https://www.google.com/');
+					}
+				},
+				{
+					label: i18next.t('menu.about'),
+					accelerator: 'CmdorCtrl+Alt+A',
+					click(item) {
+						const aboutWindow = new electron.BrowserWindow({
+						width: 400,
+						height: 400,
+						useContentSize: true,
+						autoHideMenuBar: true,
+						title: 'About Etcher-ng',
+						webPreferences: {
+							nodeIntegration: false,
+							nodeIntegrationInWorker: false,
+							contextIsolation: false,
+							sandbox: false,
+							experimentalFeatures: true,
+							webviewTag: true,
+							devTools: true,
+							preload: path.join(__dirname, 'lib/gui/preload.js')											   
+						},
+					});
+					require("@electron/remote/main").enable(aboutWindow.webContents);
+					aboutWindow.loadFile(path.join(__dirname,'lib/gui/about.html'));
+					electronLog.info('Opened about.html');
+					}
+				}
 			],
 		},
 	];
@@ -118,6 +152,22 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					type: 'separator' as const,
 				},
 				{
+					label: i18next.t('menu.goback'),
+					accelerator: 'Alt+Left',
+					click(item, focusedWindow) {
+						if (focusedWindow) focusedWindow.webContents.goBack();
+						electronLog.info('Navigated back');
+					}
+				},
+				{
+					label: i18next.t('menu.goforward'),
+					accelerator: 'Alt+Right',
+					click(item, focusedWindow) {
+						if (focusedWindow) focusedWindow.webContents.goForward();
+						electronLog.info('Navigated forward');
+					}
+				},
+				{
 					role: 'quit' as const,
 					label: i18next.t('menu.quit'),
 				},
@@ -127,6 +177,22 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 		menuTemplate.unshift({
 			label: displayName,
 			submenu: [
+				{
+					label: i18next.t('menu.goback'),
+					accelerator: 'Alt+Left',
+					click(item, focusedWindow) {
+						if (focusedWindow) focusedWindow.webContents.goBack();
+						electronLog.info('Navigated back');
+					}
+				},
+				{
+					label: i18next.t('menu.goforward'),
+					accelerator: 'Alt+Right',
+					click(item, focusedWindow) {
+						if (focusedWindow) focusedWindow.webContents.goForward();
+						electronLog.info('Navigated forward');
+					}
+				},
 				{
 					role: 'quit',
 				},
