@@ -23,6 +23,7 @@
     "start": "electron-forge start",
     "make": "electron-forge make",
     "clean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack && rimraf node_modules",
+    "distclean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack",
     "burn": "rimraf package-lock.json && rimraf node_modules"
   },
   "husky": {

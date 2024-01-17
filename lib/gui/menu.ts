@@ -113,7 +113,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 							experimentalFeatures: true,
 							webviewTag: true,
 							devTools: true,
-							preload: path.join(__dirname, 'lib/gui/preload.js')											   
+							preload: path.join(__dirname, 'lib/gui/preload.js')										   
 						},
 					});
 					require("@electron/remote/main").enable(aboutWindow.webContents);
