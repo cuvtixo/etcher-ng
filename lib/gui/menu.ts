@@ -26,6 +26,26 @@ import * as i18next from 'i18next';
  * @summary Builds a native application menu for a given window
  */
 export function buildWindowMenu(window: electron.BrowserWindow) {
+	// Get version info
+	const appVer = electron.app.getVersion();
+	const electronVer = process.versions.electron;
+	const chromeVer = process.versions.chrome;
+	const nodeVer = process.versions.node;
+	const v8Ver = process.versions.v8;
+	// Globally export what OS we are on
+	const isLinux = process.platform === 'linux';
+	const isWin = process.platform === 'win32';
+	const isMac = process.platform === 'darwin';
+	let currentOS;
+	if (isLinux) {
+		currentOS = 'Linux';
+	} else if (isWin) {
+		currentOS = 'Windows';
+	} else if (isMac) {
+		currentOS = 'MacOS';
+	} else {
+		currentOS = 'BSD';
+	}
 	/**
 	 * @summary Toggle the main window's devtools
 	 */
@@ -98,27 +118,23 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 				{
 					label: i18next.t('menu.about'),
 					accelerator: 'CmdorCtrl+Alt+A',
-					click(item) {
-						const aboutWindow = new electron.BrowserWindow({
-						width: 400,
-						height: 400,
-						useContentSize: true,
-						autoHideMenuBar: true,
-						title: 'About Etcher-ng',
-						webPreferences: {
-							nodeIntegration: false,
-							nodeIntegrationInWorker: false,
-							contextIsolation: false,
-							sandbox: false,
-							experimentalFeatures: true,
-							webviewTag: true,
-							devTools: true,
-							preload: path.join(__dirname, 'lib/gui/preload.js')										   
-						},
-					});
-					require("@electron/remote/main").enable(aboutWindow.webContents);
-					aboutWindow.loadFile(path.join(__dirname,'lib/gui/about.html'));
-					electronLog.info('Opened about.html');
+					click() {
+						const info = [
+							'Etcher-ng v' + appVer,
+							'',
+							'Electron : ' + electronVer,
+							'Chromium : ' + chromeVer,
+							'Node : ' + nodeVer,
+							'V8 : ' + v8Ver,
+							'OS : ' + currentOS
+						]
+						electron.dialog.showMessageBox({
+							type: 'info',
+							title: 'About Etcher-ng',
+							message: info.join('\n'),
+							buttons: [('Ok')]
+						});
+					electronLog.info('Opened About window');
 					}
 				}
 			],

@@ -15,7 +15,6 @@
  */
 
 import type { Configuration, ModuleOptions } from 'webpack';
-import * as CopyPlugin from 'copy-webpack-plugin';
 
 import {
 	BannerPlugin,
@@ -125,14 +124,6 @@ export const mainConfig: Configuration = {
 	module: {
 		rules,
 	},
-	plugins: [
-		new CopyPlugin({
-			patterns: [
-				{ from: 'lib/gui/about.html', to: 'lib/gui/about.html' },
-				{ from: 'lib/gui/preload.js', to: 'lib/gui/preload.js' },
-			],
-		}),
-	],
 	resolve: {
 		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.html', '.json'],
 	},
