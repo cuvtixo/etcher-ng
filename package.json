@@ -21,7 +21,7 @@
     "test": "npm run test-gui && npm run test-shared",
     "package": "electron-forge package",
     "start": "electron-forge start",
-    "make": "electron-forge make",
+    "dist": "electron-forge make",
     "clean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack && rimraf node_modules",
     "distclean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack",
     "burn": "rimraf package-lock.json && rimraf node_modules"
