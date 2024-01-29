@@ -80,6 +80,43 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			label: i18next.t('menu.window'),
 		},
 		{
+			label: i18next.t('menu.devmenu'),
+			submenu: [
+				{
+					label: i18next.t('menu.electrondevtools'),
+					accelerator: isMac ? 'Cmd+Shift+F12' : 'F12',
+					click(item, focusedWindow) {
+						electronLog.info('Opening Electron DevTools on mainWindow.');
+						focusedWindow.openDevTools({ mode: 'detach' });
+					}
+				},
+				{	type: 'separator'	},
+				{
+					label: i18next.t('menu.gpu'),
+					accelerator: 'CmdorCtrl+Alt+G',
+					click() {
+						electronLog.info('Opening chrome://gpu');
+						openInternal('chrome://gpu');
+					}
+				},
+				{
+					label: i18next.t('menu.procinternals'),
+					click() {
+						electronLog.info('Opening chrome://process-internals');
+						openInternal('chrome://process-internals');
+					}
+				},
+				{
+					label: i18next.t('menu.testwindow'),
+					accelerator: 'CmdorCtrl+N',
+					click() {
+						electronLog.info('Opening Test Window');
+						openInternal('https://www.google.com/');
+					}
+				},
+			],
+		},
+		{
 			role: 'help',
 			label: i18next.t('menu.help'),
 			submenu: [
@@ -101,22 +138,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 						openExternal('https://github.com/Alex313031/etcher-ng/issues');
 					},
 				},
-				{
-					label: i18next.t('menu.gpu'),
-					accelerator: 'CmdorCtrl+Alt+G',
-					click() {
-						electronLog.info('Opening chrome://gpu');
-						openInternal('chrome://gpu');
-					}
-				},
-				{
-					label: 'Open Test Window',
-					accelerator: 'CmdorCtrl+N',
-					click() {
-						electronLog.info('Opening Test Window');
-						openInternal('https://www.google.com/');
-					}
-				},
+				{	type: 'separator'	},
 				{
 					label: i18next.t('menu.about'),
 					accelerator: 'CmdorCtrl+Alt+A',
