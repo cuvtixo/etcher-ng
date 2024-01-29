@@ -1,7 +1,7 @@
 {
   "name": "balena-etcher",
   "private": true,
-  "displayName": "Etcher",
+  "displayName": "Etcherng",
   "productName": "Etcher-ng",
   "version": "1.19.4",
   "packageType": "local",

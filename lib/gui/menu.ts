@@ -18,6 +18,7 @@ import * as path from 'path';
 import * as electron from 'electron';
 import * as electronLog from 'electron-log';
 import { open as openInternal } from './app/os/open-internal/services/open-internal';
+import { open as openExternal } from './app/os/open-external/services/open-external';
 import { displayName } from '../../package.json';
 
 import * as i18next from 'i18next';
@@ -27,6 +28,7 @@ import * as i18next from 'i18next';
  */
 export function buildWindowMenu(window: electron.BrowserWindow) {
 	// Get version info
+	const appName = electron.app.getName();
 	const appVer = electron.app.getVersion();
 	const electronVer = process.versions.electron;
 	const chromeVer = process.versions.chrome;
@@ -96,7 +98,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 				{
 					label: i18next.t('menu.issue'),
 					click() {
-						openInternal('https://github.com/Alex313031/etcher-ng/issues');
+						openExternal('https://github.com/Alex313031/etcher-ng/issues');
 					},
 				},
 				{
@@ -120,7 +122,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					accelerator: 'CmdorCtrl+Alt+A',
 					click() {
 						const info = [
-							'Etcher-ng v' + appVer,
+							appName + ' v' + appVer,
 							'',
 							'Electron : ' + electronVer,
 							'Chromium : ' + chromeVer,
@@ -130,7 +132,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 						]
 						electron.dialog.showMessageBox({
 							type: 'info',
-							title: 'About Etcher-ng',
+							title: 'About ' + appName,
 							message: info.join('\n'),
 							buttons: [('Ok')]
 						});
@@ -143,7 +145,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 
 	if (process.platform === 'darwin') {
 		menuTemplate.unshift({
-			label: displayName,
+			label: appName,
 			submenu: [
 				{
 					role: 'about' as const,
@@ -191,7 +193,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 		});
 	} else {
 		menuTemplate.unshift({
-			label: displayName,
+			label: appName,
 			submenu: [
 				{
 					label: i18next.t('menu.goback'),
