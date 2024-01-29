@@ -75,8 +75,8 @@ export async function writeConfigFile(
 }
 
 const DEFAULT_SETTINGS: _.Dictionary<any> = {
-	errorReporting: true,
-	updatesEnabled: ['appimage', 'nsis', 'dmg'].includes(packageJSON.packageType),
+	errorReporting: false,
+	updatesEnabled: false,
 	desktopNotifications: true,
 	autoBlockmapping: true,
 	decompressFirst: true,
