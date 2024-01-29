@@ -154,6 +154,7 @@ async function createMainWindow() {
 	const fullscreen = Boolean(await settings.get('fullscreen'));
 	const defaultWidth = settings.DEFAULT_WIDTH;
 	const defaultHeight = settings.DEFAULT_HEIGHT;
+	const iconPath = path.join(__dirname, 'assets', 'icon.png');
 	let width = defaultWidth;
 	let height = defaultHeight;
 	if (fullscreen) {
@@ -172,7 +173,7 @@ async function createMainWindow() {
 		kiosk: fullscreen,
 		autoHideMenuBar: false,
 		titleBarStyle: 'hiddenInset',
-		icon: path.join(__dirname, 'media', 'icon.png'),
+		icon: iconPath,
 		darkTheme: true,
 		webPreferences: {
 			backgroundThrottling: false,

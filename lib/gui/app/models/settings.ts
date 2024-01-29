@@ -78,6 +78,7 @@ const DEFAULT_SETTINGS: _.Dictionary<any> = {
 	errorReporting: false,
 	updatesEnabled: false,
 	desktopNotifications: true,
+	verify: false,
 	autoBlockmapping: true,
 	decompressFirst: true,
 };

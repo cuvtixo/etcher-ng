@@ -96,7 +96,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 				{
 					label: i18next.t('menu.issue'),
 					click() {
-						openInternal('https://github.com/balena-io/etcher/issues');
+						openInternal('https://github.com/Alex313031/etcher-ng/issues');
 					},
 				},
 				{

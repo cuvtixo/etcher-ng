@@ -320,7 +320,7 @@ export class MainPage extends React.Component<
 								onClick={() =>
 									openExternal(
 										selectionState.getImage()?.supportUrl ||
-											'https://github.com/balena-io/etcher/blob/master/docs/SUPPORT.md',
+											'https://github.com/Alex313031/etcher-ng/blob/master/docs/SUPPORT.md',
 									)
 								}
 								tabIndex={6}

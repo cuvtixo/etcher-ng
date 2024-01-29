@@ -35,6 +35,10 @@ interface Setting {
 async function getSettingsList(): Promise<Setting[]> {
 	const list: Setting[] = [
 		{
+			name: 'verify',
+			label: i18next.t('settings.verify'),
+		},
+		{
 			name: 'errorReporting',
 			label: i18next.t('settings.errorReporting'),
 		},
@@ -142,7 +146,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 					}}
 					onClick={() =>
 						openExternal(
-							'https://github.com/balena-io/etcher/blob/master/CHANGELOG.md',
+							'https://github.com/Alex313031/etcher-ng/blob/master/CHANGELOG.md',
 						)
 					}
 				>

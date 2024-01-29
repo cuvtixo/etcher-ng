@@ -122,3 +122,5 @@ secrets/WINDOWS_SIGNING.pfx
 #local development
 .yalc
 yalc.lock
+yarn.lock
+package-lock.json

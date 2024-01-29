@@ -135,6 +135,7 @@ const translation = {
 		settings: {
 			errorReporting:
 				'Anonymously report errors and usage statistics to balena.io',
+			verify: 'Auto Verify after flashing',
 			autoUpdate: 'Auto-updates enabled',
 			settings: 'Settings',
 			systemInformation: 'System Information',

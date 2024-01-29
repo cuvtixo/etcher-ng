@@ -128,6 +128,7 @@ const translation = {
 		},
 		settings: {
 			errorReporting: '匿名向 balena.io 回報程式錯誤和使用統計資料',
+			verify: '刷機後自動驗證',
 			autoUpdate: '自動更新',
 			settings: '軟體設定',
 			systemInformation: '系統資訊',

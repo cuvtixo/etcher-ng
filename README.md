@@ -1,4 +1,4 @@
-# Etcher
+# Etcher-ng <img src="Logo.png" width="42">
 
 > Flash OS images to SD cards & USB drives, safely and easily.
 

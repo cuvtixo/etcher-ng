@@ -145,6 +145,7 @@ const translation = {
 		},
 		settings: {
 			errorReporting: '匿名地向 balena.io 报告运行错误和使用统计',
+			verify: '刷机后自动验证',
 			autoUpdate: '自动更新',
 			settings: '软件设置',
 			systemInformation: '系统信息',

@@ -35,15 +35,16 @@ const config: ForgeConfig = {
 		asar: true,
 		icon: './assets/icon',
 		executableName:
-			process.platform === 'linux' ? 'balena-etcher' : 'balenaEtcher',
-		appBundleId: 'io.balena.etcher',
+			process.platform === 'linux' ? 'etcher-ng' : 'EtcherNG',
+		appBundleId: 'io.alex313031.etcher',
 		appCategoryType: 'public.app-category.developer-tools',
-		appCopyright: 'Copyright 2016-2023 Balena Ltd',
+		appCopyright: 'Copyright 2016-2024 Balena Ltd. and Alex313031',
 		darwinDarkModeSupport: true,
 		protocols: [{ name: 'etcher', schemes: ['etcher'] }],
 		extraResource: [
 			'lib/shared/catalina-sudo/sudo-askpass.osascript-zh.js',
 			'lib/shared/catalina-sudo/sudo-askpass.osascript-en.js',
+			'lib/gui/assets',
 		],
 		osxSign: {
 			optionsForFile: () => ({

@@ -1,17 +1,18 @@
 {
   "name": "balena-etcher",
   "private": true,
-  "displayName": "balenaEtcher",
-  "productName": "balenaEtcher",
+  "displayName": "Etcher",
+  "productName": "Etcher-ng",
   "version": "1.19.4",
   "packageType": "local",
-  "main": ".webpack/main",
+  "main": "./.webpack/main/index.js",
   "description": "Flash OS images to SD cards and USB drives, safely and easily.",
   "productDescription": "Etcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
-  "homepage": "https://etcher.balena.io/",
+  "author": "Alex313031 <alex313031@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/Alex313031/etcher-ng#readme",
   "repository": {
-    "type": "git",
-    "url": "git@github.com:Alex313031/etcher-ng.git"
+    "url": "https://github.com/Alex313031/etcher-ng.git"
   },
   "scripts": {
     "prettify": "prettier --write lib/**/*.css && balena-lint --fix --typescript typings lib tests forge.config.ts forge.sidecar.ts webpack.config.ts",
@@ -24,7 +25,7 @@
     "dist": "electron-forge make",
     "clean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack && rimraf node_modules",
     "distclean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack",
-    "burn": "rimraf package-lock.json && rimraf node_modules",
+    "burn": "rimraf package-lock.json && rimraf npm-shrinkwrap.json && rimraf node_modules",
     "shrinkwrap": "npm shrinkwrap"
   },
   "husky": {
@@ -32,8 +33,6 @@
       "pre-commit": "npm run prettify"
     }
   },
-  "author": "Alex313031 <alex313031@gmail.com>",
-  "license": "Apache-2.0",
   "dependencies": {
     "@balena/sudo-prompt": "9.2.1-workaround-windows-amperstand-in-username-0849e215b947987a643fe5763902aea201255534",
     "@electron/remote": "^2.1.2",
@@ -154,6 +153,6 @@
     "node": ">=18 <20"
   },
   "versionist": {
-    "publishedAt": "2024-01-26T17:29:27.845Z"
+    "publishedAt": "2024-01-29T17:29:27.845Z"
   }
 }
