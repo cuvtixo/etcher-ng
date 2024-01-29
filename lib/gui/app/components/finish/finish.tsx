@@ -43,7 +43,7 @@ function restart(goToMain: () => void) {
 async function getSuccessBannerURL() {
 	return (
 		(await settings.get('successBannerURL')) ??
-		''
+		'data:text/html;base64,PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCiAgPGhlYWQ+DQogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiPg0KICA8L2hlYWQ+DQogIDxib2R5Pg0KICAgIDxwPmVtcHR5IHRlc3Q8L3A+DQogIDwvYm9keT4NCjwvaHRtbD4NCg=='
 	);
 }
 
