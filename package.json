@@ -24,7 +24,8 @@
     "dist": "electron-forge make",
     "clean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack && rimraf node_modules",
     "distclean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack",
-    "burn": "rimraf package-lock.json && rimraf node_modules"
+    "burn": "rimraf package-lock.json && rimraf node_modules",
+    "shrinkwrap": "npm shrinkwrap"
   },
   "husky": {
     "hooks": {
@@ -41,11 +42,11 @@
     "analytics-client": "^2.0.1",
     "axios": "^1.6.0",
     "debug": "4.3.4",
-    "electron-context-menu": "3.6.1",
+    "electron-context-menu": "^3.6.1",
     "electron-log": "^5.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "6.1.7",
-    "etcher-sdk": "9.0.0",
+    "etcher-sdk": "9.0.5",
     "i18next": "23.7.8",
     "immutable": "3.8.2",
     "lodash": "4.17.21",
