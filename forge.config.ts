@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 const config: ForgeConfig = {
 	packagerConfig: {
 		asar: true,
-		icon: './assets/iconset',
+		icon: './assets/icon',
 		executableName:
 			process.platform === 'linux' ? 'etcher-ng' : 'Etcher-ng',
 		appBundleId: 'io.alex313031.etcher',
