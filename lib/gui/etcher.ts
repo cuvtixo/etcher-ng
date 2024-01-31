@@ -24,6 +24,7 @@ import * as electron from 'electron';
 import * as remoteMain from '@electron/remote/main';
 import { autoUpdater } from 'electron-updater';
 import * as electronLog from 'electron-log';
+import * as contextMenu from 'electron-context-menu';
 import { promises as fs } from 'fs';
 import { platform } from 'os';
 import * as path from 'path';
@@ -255,6 +256,64 @@ electron.ipcMain.handle('get-util-path', () => {
 	}
 	// In any other case, resolve the helper relative to resources path.
 	return path.resolve(process.resourcesPath, ETCHER_UTIL_BIN_PATH);
+});
+
+contextMenu({
+  // Chromium context menu defaults
+  showSelectAll: true,
+  showCopyImage: true,
+  showCopyImageAddress: true,
+  showSaveImageAs: true,
+  showCopyVideoAddress: true,
+  showSaveVideoAs: true,
+  showCopyLink: true,
+  showSaveLinkAs: true,
+  showInspectElement: true,
+  showLookUpSelection: true,
+  showSearchWithGoogle: true,
+  prepend: (defaultActions, parameters) => [
+  {
+    label: 'Open Video in New Window',
+    // Only show it when right-clicking video
+    visible: parameters.mediaType === 'video',
+    click: () => {
+      const newWin = new BrowserWindow({
+      title: 'New Window',
+      width: 1024,
+      height: 768,
+      useContentSize: true,
+      webPreferences: {
+        nodeIntegration: false,
+        nodeIntegrationInWorker: false,
+        experimentalFeatures: true,
+        devTools: true
+      }
+      });
+      const vidURL = parameters.srcURL;
+      newWin.loadURL(vidURL);
+    }
+  },
+  {
+    label: 'Open Link in New Window',
+    // Only show it when right-clicking a link
+    visible: parameters.linkURL.trim().length > 0,
+    click: () => {
+      const newWin = new BrowserWindow({
+      title: 'New Window',
+      width: 1024,
+      height: 768,
+      useContentSize: true,
+      webPreferences: {
+        nodeIntegration: false,
+        nodeIntegrationInWorker: false,
+        experimentalFeatures: true,
+        devTools: true
+      }
+      });
+      const toURL = parameters.linkURL;
+      newWin.loadURL(toURL);
+    }
+  }]
 });
 
 async function main(): Promise<void> {

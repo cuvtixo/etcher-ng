@@ -1,5 +1,4 @@
  - Restore Electron-Builder
  - Make openInternal work for everything
  - Make new banner and MacOS background
- - Add electron-context-menu
  - Use builtin logger instead of electron-log, and make it output to console for everything
