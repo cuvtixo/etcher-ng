@@ -1,4 +1,5 @@
  - Restore Electron-Builder
+ - Use electron-store to save windowDetails
  - Make openInternal work for everything
  - Make new banner and MacOS background
  - Use builtin logger instead of electron-log, and make it output to console for everything
