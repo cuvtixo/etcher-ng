@@ -48,6 +48,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 	} else {
 		currentOS = 'BSD';
 	}
+	const archType = Os.arch();
 	/**
 	 * @summary Toggle the main window's devtools
 	 */
@@ -150,7 +151,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 							'Chromium : ' + chromeVer,
 							'Node : ' + nodeVer,
 							'V8 : ' + v8Ver,
-							'OS : ' + currentOS
+							'OS : ' + currentOS + ' ' + archType
 						]
 						electron.dialog.showMessageBox({
 							type: 'info',
