@@ -24,6 +24,7 @@ import * as electron from 'electron';
 import * as remoteMain from '@electron/remote/main';
 import { autoUpdater } from 'electron-updater';
 import * as electronLog from 'electron-log';
+import * as Store from 'electron-store';
 import * as contextMenu from 'electron-context-menu';
 import { promises as fs } from 'fs';
 import { platform } from 'os';
@@ -55,6 +56,8 @@ remoteMain.initialize();
 
 // Restrict main.log size to 100Kb
 electronLog.transports.file.maxSize = 1024 * 100;
+
+const store = new Store();
 
 async function checkForUpdates(interval: number) {
 	// We use a while loop instead of a setInterval to preserve
@@ -164,11 +167,13 @@ async function createMainWindow() {
 	mainWindow = new electron.BrowserWindow({
 		width,
 		height,
+		minWidth: 632,
+		minHeight: 400,
 		frame: !fullscreen,
 		useContentSize: true,
 		show: false,
 		resizable: true,
-		maximizable: false,
+		maximizable: true,
 		fullscreen,
 		fullscreenable: fullscreen,
 		kiosk: fullscreen,
@@ -227,6 +232,28 @@ async function createMainWindow() {
 			}
 		}
 	});
+
+	mainWindow.on('close', () => {
+		if (mainWindow) {
+			store.set('windowDetails', {
+				position: mainWindow.getPosition(),
+			});
+			electronLog.info('Saved windowDetails.');
+		} else {
+			electronLog.error('Error: Window was not defined while trying to save windowDetails.');
+		}
+	});
+
+	const windowDetails = store.get('windowDetails');
+
+	if (windowDetails) {
+		mainWindow.setPosition(
+			windowDetails.position[0],
+			windowDetails.position[1]
+		);
+	} else {
+		electronLog.info('No windowDetails.');
+	}
 
 	return mainWindow;
 }
