@@ -86,13 +86,13 @@ const config: ForgeConfig = {
 		}),
 		new MakerAppImage({
 			options: {
-				icon: './assets/icon.png',
+				icon: './icon.png',
 				categories: ['Utility'],
 			},
 		}),
 		new MakerRpm({
 			options: {
-				icon: './assets/icon.png',
+				icon: './icon.png',
 				categories: ['Utility'],
 				productDescription,
 				requires: ['util-linux'],
@@ -100,7 +100,7 @@ const config: ForgeConfig = {
 		}),
 		new MakerDeb({
 			options: {
-				icon: './assets/icon.png',
+				icon: './icon.png',
 				categories: ['Utility'],
 				section: 'utils',
 				priority: 'optional',

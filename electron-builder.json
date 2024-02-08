@@ -8,7 +8,7 @@
   "directories": {
     "app": "./.webpack/x64",
     "buildResources": "./assets",
-    "output": "dist-builder"
+    "output": "dist"
   },
   "files": [ "**/*" ],
   "extraResources": [
@@ -23,6 +23,10 @@
     {
       "from": "./out/sidecar/bin/x64/etcher-util",
       "to": "./"
+    },
+    {
+      "from": "./lib/gui/assets",
+      "to": "./assets"
     }
   ],
   "linux": {
@@ -87,6 +91,9 @@
       "libxtst6",
       "polkit-1-auth-agent | policykit-1-gnome | polkit-kde-1"
     ]
+  },
+  "appImage": {
+    "category": "Utility;"
   },
   "rpm": {
     "afterInstall": "./after-install.tpl",
