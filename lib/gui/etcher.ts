@@ -59,6 +59,8 @@ electronLog.transports.file.maxSize = 1024 * 100;
 
 const store = new Store();
 
+const isWin = process.platform === 'win32';
+
 async function checkForUpdates(interval: number) {
 	// We use a while loop instead of a setInterval to preserve
 	// async execution time between each function call
@@ -158,7 +160,7 @@ async function createMainWindow() {
 	const fullscreen = Boolean(await settings.get('fullscreen'));
 	const defaultWidth = settings.DEFAULT_WIDTH;
 	const defaultHeight = settings.DEFAULT_HEIGHT;
-	const iconPath = path.join(__dirname, 'media', 'icon64.png');
+	const iconPath = isWin ? path.join(__dirname, 'media', 'icon.ico') : path.join(__dirname, 'media', 'icon64.png');
 	let width = defaultWidth;
 	let height = defaultHeight;
 	if (fullscreen) {

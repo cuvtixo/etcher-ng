@@ -131,6 +131,7 @@ export const mainConfig: Configuration = {
 		new CopyPlugin({
 			patterns: [
 				{ from: 'lib/gui/assets/icon64.png', to: 'media/icon64.png' },
+				{ from: 'lib/gui/assets/icon.ico', to: 'media/icon.ico' },
 			],
 		}),
 	],
