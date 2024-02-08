@@ -127,6 +127,7 @@
     "entitlementsInherit": "assets/entitlements.mac.plist",
     "icon": "assets/icon.icns",
     "darkModeSupport": true,
+    "minimumSystemVersion": "10.13",
     "artifactName": "etcher-ng_${version}_macos_${arch}.${ext}",
     "target": [
       "dmg",

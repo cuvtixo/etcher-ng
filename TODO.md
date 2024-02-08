@@ -1,3 +1,2 @@
  - Make openInternal work for everything
- - Make new MacOS background
  - Use builtin logger instead of electron-log, and make it output to console for everything
