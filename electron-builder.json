@@ -21,7 +21,7 @@
       "to": "./"
     },
     {
-      "from": "./out/sidecar/bin/x64/etcher-util",
+      "from": "./out/sidecar/bin/x64/*",
       "to": "./"
     },
     {
