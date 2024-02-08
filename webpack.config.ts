@@ -132,6 +132,7 @@ export const mainConfig: Configuration = {
 			patterns: [
 				{ from: 'lib/gui/assets/icon64.png', to: 'media/icon64.png' },
 				{ from: 'lib/gui/assets/icon.ico', to: 'media/icon.ico' },
+				{ from: 'package-builder.json', to: '../package.json' },
 			],
 		}),
 	],

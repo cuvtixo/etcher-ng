@@ -242,7 +242,7 @@ async function createMainWindow() {
 			});
 			electronLog.info('Saved windowDetails.');
 		} else {
-			electronLog.error('Error: Window was not defined while trying to save windowDetails.');
+			electronLog.error('Error: mainWindow was not defined while trying to save windowDetails.');
 		}
 	});
 
@@ -269,8 +269,28 @@ electron.app.on('window-all-closed', electron.app.quit);
 // make use of it to ensure the browser window is completely destroyed.
 // See https://github.com/electron/electron/issues/5273
 electron.app.on('before-quit', () => {
+	if (mainWindow) {
+		store.set('windowDetails', {
+			position: mainWindow.getPosition(),
+		});
+		electronLog.info('Saved windowDetails.');
+	} else {
+		electronLog.error('Error: mainWindow was not defined while trying to save windowDetails.');
+	}
 	electron.app.releaseSingleInstanceLock();
 	process.exit(EXIT_CODES.SUCCESS);
+});
+
+electron.app.on('relaunch', () => {
+	electronLog.warn('Restarting App...');
+	if (mainWindow) {
+		store.set('windowDetails', {
+			position: mainWindow.getPosition(),
+		});
+		electronLog.info('Saved windowDetails.');
+	} else {
+		electronLog.error('Error: mainWindow was not defined while trying to save windowDetails.');
+	}
 });
 
 // this is replaced at build-time with the path to helper binary,

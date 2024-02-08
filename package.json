@@ -7,7 +7,7 @@
   "packageType": "local",
   "main": ".webpack/main",
   "description": "Flash OS images to SD cards and USB drives, safely and easily.",
-  "productDescription": "Etcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
+  "productDescription": "Etcher-ng is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
   "author": "Alex313031 <alex313031@gmail.com>",
   "license": "Apache-2.0",
   "homepage": "https://github.com/Alex313031/etcher-ng#readme",
@@ -23,16 +23,12 @@
     "package": "electron-forge package",
     "start": "electron-forge start",
     "build": "npm run package",
-    "dist": "electron-forge make",
-    "clean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack && rimraf node_modules",
-    "distclean": "rimraf ./out && rimraf ./dist && rimraf ./.webpack",
+    "forge": "electron-forge make",
+    "dist": "electron-builder -l deb",
+    "clean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack && rimraf node_modules",
+    "distclean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack",
     "burn": "rimraf package-lock.json && rimraf npm-shrinkwrap.json && rimraf node_modules",
     "shrinkwrap": "npm shrinkwrap"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettify"
-    }
   },
   "dependencies": {
     "@balena/sudo-prompt": "9.2.1-workaround-windows-amperstand-in-username-0849e215b947987a643fe5763902aea201255534",
@@ -156,6 +152,11 @@
   },
   "engines": {
     "node": ">=18 <20"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettify"
+    }
   },
   "versionist": {
     "publishedAt": "2024-01-29T17:29:27.845Z"

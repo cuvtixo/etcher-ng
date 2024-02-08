@@ -48,7 +48,7 @@ const config: ForgeConfig = {
 		],
 		osxSign: {
 			optionsForFile: () => ({
-				entitlements: './entitlements.mac.plist',
+				entitlements: './assets/entitlements.mac.plist',
 				hardenedRuntime: true,
 			}),
 		},

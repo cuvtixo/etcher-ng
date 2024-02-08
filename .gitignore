@@ -99,6 +99,7 @@ out/
 
 # Build artifacts
 dist/
+dist-builder/
 
 # Certificates
 *.spc

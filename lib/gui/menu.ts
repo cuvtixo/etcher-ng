@@ -121,7 +121,6 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					label: i18next.t('menu.restart'),
 					accelerator: 'CmdorCtrl+Shift+R',
 					click() {
-						electronLog.warn('Restarting App...');
 						electron.app.relaunch();
 						electron.app.quit();
 					}
@@ -207,7 +206,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					label: i18next.t('menu.goback'),
 					accelerator: 'Alt+Left',
 					click(item, focusedWindow) {
-						if (focusedWindow) focusedWindow.webContents.goBack();
+						if (focusedWindow) {focusedWindow.webContents.goBack();}
 						electronLog.info('Navigated back');
 					}
 				},
@@ -215,7 +214,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					label: i18next.t('menu.goforward'),
 					accelerator: 'Alt+Right',
 					click(item, focusedWindow) {
-						if (focusedWindow) focusedWindow.webContents.goForward();
+						if (focusedWindow) {focusedWindow.webContents.goForward();}
 						electronLog.info('Navigated forward');
 					}
 				},
@@ -233,7 +232,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					label: i18next.t('menu.goback'),
 					accelerator: 'Alt+Left',
 					click(item, focusedWindow) {
-						if (focusedWindow) focusedWindow.webContents.goBack();
+						if (focusedWindow) {focusedWindow.webContents.goBack();}
 						electronLog.info('Navigated back');
 					}
 				},
@@ -241,7 +240,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					label: i18next.t('menu.goforward'),
 					accelerator: 'Alt+Right',
 					click(item, focusedWindow) {
-						if (focusedWindow) focusedWindow.webContents.goForward();
+						if (focusedWindow) {focusedWindow.webContents.goForward();}
 						electronLog.info('Navigated forward');
 					}
 				},
