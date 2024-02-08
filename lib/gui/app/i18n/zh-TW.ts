@@ -146,6 +146,7 @@ const translation = {
 			devmenu: '開發商',
 			electrondevtools: '開啟 Electron 開發工具',
 			testwindow: '開啟測試視窗',
+			restart: '重新啟動應用程式',
 			gpu: '打開 chrome://gpu',
 			procinternals: '打開 chrome://process-internals',
 			goback: '回去',

@@ -1,12 +1,12 @@
 {
   "name": "etcher-ng",
-  "version": "1.19.4",
+  "version": "1.19.5",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "etcher-ng",
-      "version": "1.19.4",
+      "version": "1.19.5",
       "license": "Apache-2.0",
       "dependencies": {
         "@balena/sudo-prompt": "9.2.1-workaround-windows-amperstand-in-username-0849e215b947987a643fe5763902aea201255534",
@@ -21,7 +21,7 @@
         "electron-squirrel-startup": "^1.0.0",
         "electron-store": "8.1.0",
         "electron-updater": "6.1.7",
-        "etcher-sdk": "9.0.5",
+        "etcher-sdk": "9.0.6",
         "i18next": "23.7.8",
         "immutable": "3.8.2",
         "lodash": "4.17.21",
@@ -12045,9 +12045,9 @@
       }
     },
     "node_modules/etcher-sdk": {
-      "version": "9.0.5",
-      "resolved": "https://registry.npmjs.org/etcher-sdk/-/etcher-sdk-9.0.5.tgz",
-      "integrity": "sha512-y8TAZBmg67BfWDEvSYgrrcZWSbmBxI2uZe48U23Y0zJ7BIYfzGTVAemWtICaSKrCilNUEa3I/2exrqIj23XRsQ==",
+      "version": "9.0.6",
+      "resolved": "https://registry.npmjs.org/etcher-sdk/-/etcher-sdk-9.0.6.tgz",
+      "integrity": "sha512-vRZ6blG9ja1DqMX98WDmXPHLB3wdpVs5Kqy7AdCY5LoOtFngfAm+jPcJJea5gXdIY2wHxvr5SfasDd9zdrZEVw==",
       "dependencies": {
         "@balena/node-beaglebone-usbboot": "^3.0.0",
         "@balena/udif": "^1.1.2",
@@ -12059,7 +12059,7 @@
         "check-disk-space": "^3.4.0",
         "cyclic-32": "^1.1.0",
         "debug": "^4.3.4",
-        "drivelist": "^11.1.0",
+        "drivelist": "^11.2.0",
         "file-disk": "^8.0.1",
         "file-type": "^16.0.0",
         "glob": "^10.3.10",

@@ -68,15 +68,13 @@ const flashingWorkflowUuid = store.getState().toJS().flashingWorkflowUuid;
 
 console.log(outdent`
 	${outdent}
-	 _____ _       _
-	|  ___| |     | |
-	| |__ | |_ ___| |__   ___ _ __
-	|  __|| __/ __| '_ \\ / _ \\ '__|
-	| |___| || (__| | | |  __/ |
-	\\____/ \\__\\___|_| |_|\\___|_|
-
-	Interested in joining the Etcher team?
-	Drop us a line at join+etcher@balena.io
+	 _______  _______  _______  __   __  _______  ______           __    _  _______ 
+	|       ||       ||       ||  | |  ||       ||    _ |         |  |  | ||       |
+	|    ___||_     _||       ||  |_|  ||    ___||   | ||   ____  |   |_| ||    ___|
+	|   |___   |   |  |       ||       ||   |___ |   |_||_ |____| |       ||   | __ 
+	|    ___|  |   |  |      _||       ||    ___||    __  |       |  _    ||   ||  |
+	|   |___   |   |  |     |_ |   _   ||   |___ |   |  | |       | | |   ||   |_| |
+	|_______|  |___|  |_______||__| |__||_______||___|  |_|       |_|  |__||_______|
 
 	Version = ${packageJSON.version}, Type = ${packageJSON.packageType}
 `);

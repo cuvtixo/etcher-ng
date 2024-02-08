@@ -82,6 +82,7 @@ const translation = {
 			devmenu: '开发商',
 			electrondevtools: '打开 Electron 开发工具',
 			testwindow: '打开测试窗口',
+			restart: '重新启动应用程序',
 			gpu: '打开 chrome://gpu',
 			procinternals: '打开 chrome://process-internals',
 			goback: '回去',

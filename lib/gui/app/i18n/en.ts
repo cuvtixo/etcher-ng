@@ -154,6 +154,7 @@ const translation = {
 			devmenu: 'Developer',
 			electrondevtools: 'Open Electron DevTools',
 			testwindow: 'Open Test Window',
+			restart: 'Restart App',
 			gpu: 'Open chrome://gpu',
 			procinternals: 'Open chrome://process-internals',
 			goback: 'Go Back',

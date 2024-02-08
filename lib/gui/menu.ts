@@ -116,6 +116,16 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 						openInternal('https://www.google.com/');
 					}
 				},
+				{	type: 'separator'	},
+				{
+					label: i18next.t('menu.restart'),
+					accelerator: 'CmdorCtrl+Shift+R',
+					click() {
+						electronLog.warn('Restarting App...');
+						electron.app.relaunch();
+						electron.app.quit();
+					}
+				},
 			],
 		},
 		{
