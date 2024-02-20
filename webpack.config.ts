@@ -15,7 +15,7 @@
  */
 
 import type { Configuration, ModuleOptions } from 'webpack';
-
+import * as CopyPlugin from 'copy-webpack-plugin';
 import {
 	BannerPlugin,
 	IgnorePlugin,
@@ -125,6 +125,15 @@ export const mainConfig: Configuration = {
 		rules,
 	},
 	resolve: {
-		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
+		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.html', '.json'],
 	},
+	plugins: [
+		new CopyPlugin({
+			patterns: [
+				{ from: 'lib/gui/assets/icon64.png', to: 'media/icon64.png' },
+				{ from: 'lib/gui/assets/icon.ico', to: 'media/icon.ico' },
+				{ from: 'package-builder.json', to: '../package.json' },
+			],
+		}),
+	],
 };

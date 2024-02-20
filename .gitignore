@@ -34,6 +34,7 @@ coverage
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+/release/
 
 # Dependency directories
 node_modules/
@@ -98,6 +99,7 @@ out/
 
 # Build artifacts
 dist/
+dist-builder/
 
 # Certificates
 *.spc
@@ -121,3 +123,5 @@ secrets/WINDOWS_SIGNING.pfx
 #local development
 .yalc
 yalc.lock
+yarn.lock
+package-lock.json

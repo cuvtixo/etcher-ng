@@ -1,17 +1,19 @@
 {
-  "name": "balena-etcher",
+  "name": "etcher-ng",
   "private": true,
-  "displayName": "balenaEtcher",
-  "productName": "balenaEtcher",
-  "version": "1.19.5",
+  "displayName": "Etcherng",
+  "productName": "Etcher-ng",
+  "version": "1.19.6",
   "packageType": "local",
   "main": ".webpack/main",
   "description": "Flash OS images to SD cards and USB drives, safely and easily.",
-  "productDescription": "Etcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
-  "homepage": "https://github.com/balena-io/etcher",
+  "productDescription": "Etcher-ng is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
+  "author": "Alex313031 <alex313031@gmail.com>",
+  "license": "Apache-2.0",
+  "copyright": "Copyright © 2024 Alex313031",
+  "homepage": "https://github.com/Alex313031/etcher-ng#readme",
   "repository": {
-    "type": "git",
-    "url": "git@github.com:balena-io/etcher.git"
+    "url": "https://github.com/Alex313031/etcher-ng.git"
   },
   "scripts": {
     "prettify": "prettier --write lib/**/*.css && balena-lint --fix --typescript typings lib tests forge.config.ts forge.sidecar.ts webpack.config.ts",
@@ -21,26 +23,28 @@
     "test": "npm run test-gui && npm run test-shared",
     "package": "electron-forge package",
     "start": "electron-forge start",
-    "make": "electron-forge make"
+    "build": "npm run package",
+    "forge": "electron-forge make",
+    "dist": "electron-builder",
+    "clean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack && rimraf node_modules",
+    "distclean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack",
+    "burn": "rimraf package-lock.json && rimraf npm-shrinkwrap.json && rimraf node_modules",
+    "shrinkwrap": "npm shrinkwrap"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettify"
-    }
-  },
-  "author": "Balena Ltd. <hello@balena.io>",
-  "license": "Apache-2.0",
   "dependencies": {
     "@balena/sudo-prompt": "9.2.1-workaround-windows-amperstand-in-username-0849e215b947987a643fe5763902aea201255534",
-    "@electron/remote": "^2.1.0",
+    "@electron/remote": "^2.1.2",
     "@fortawesome/fontawesome-free": "6.5.1",
     "@sentry/electron": "^4.15.1",
     "analytics-client": "^2.0.1",
     "axios": "^1.6.0",
     "debug": "4.3.4",
+    "electron-context-menu": "^3.6.1",
+    "electron-log": "^5.1.1",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "8.1.0",
     "electron-updater": "6.1.7",
-    "etcher-sdk": "9.0.0",
+    "etcher-sdk": "9.0.6",
     "i18next": "23.7.8",
     "immutable": "3.8.2",
     "lodash": "4.17.21",
@@ -71,6 +75,7 @@
     "@reforged/maker-appimage": "3.3.2",
     "@svgr/webpack": "8.1.0",
     "@types/chai": "4.3.11",
+    "@types/copy-webpack-plugin": "8.0.1",
     "@types/debug": "^4.1.12",
     "@types/mime-types": "2.1.4",
     "@types/mocha": "^10.0.6",
@@ -84,8 +89,10 @@
     "@vercel/webpack-asset-relocator-loader": "1.7.3",
     "catch-uncommitted": "^2.0.0",
     "chai": "4.3.10",
+    "copy-webpack-plugin": "8.1.1",
     "css-loader": "5.2.7",
-    "electron": "27.1.3",
+    "electron": "22.3.27",
+    "electron-builder": "23.6.0",
     "electron-mocha": "^12.2.0",
     "file-loader": "6.2.0",
     "husky": "8.0.3",
@@ -93,6 +100,7 @@
     "native-addon-loader": "2.0.1",
     "node-loader": "^2.0.0",
     "omit-deep-lodash": "1.1.7",
+    "rimraf": "^3.0.2",
     "pkg": "^5.8.1",
     "sinon": "17.0.1",
     "string-replace-loader": "3.1.0",
@@ -146,7 +154,12 @@
   "engines": {
     "node": ">=18 <20"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettify"
+    }
+  },
   "versionist": {
-    "publishedAt": "2024-02-14T19:51:16.786Z"
+    "publishedAt": "2024-02-20T17:29:27.845Z"
   }
 }

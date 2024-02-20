@@ -76,7 +76,7 @@ async function performWrite(
 	drives: DrivelistDrive[],
 	onProgress: sdk.multiWrite.OnProgressFunction,
 ): Promise<{ cancelled?: boolean }> {
-	const { autoBlockmapping, decompressFirst } = await settings.getAll();
+	const { verify, autoBlockmapping, decompressFirst } = await settings.getAll();
 
 	console.log({ image, drives });
 
@@ -169,6 +169,7 @@ async function performWrite(
 			image,
 			destinations: drives,
 			SourceType: image.SourceType,
+			verify,
 			autoBlockmapping,
 			decompressFirst,
 		};
