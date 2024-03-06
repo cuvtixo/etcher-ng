@@ -85,9 +85,9 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 				{
 					label: i18next.t('menu.electrondevtools'),
 					accelerator: isMac ? 'Cmd+Shift+F12' : 'F12',
-					click(item, focusedWindow) {
+					click() {
 						electronLog.info('Opening Electron DevTools on mainWindow.');
-						focusedWindow.openDevTools({ mode: 'detach' });
+						toggleDevTools();
 					},
 				},
 				{ type: 'separator' },
