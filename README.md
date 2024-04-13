@@ -38,13 +38,13 @@ Package for Debian and Ubuntu can be downloaded from the [Github release page](h
 ##### Install .deb file using apt
 
    ```sh
-      sudo apt install ./balena-etcher_******_amd64.deb
+      sudo apt install ./etcher-ng******_amd64.deb
    ```
 
 ##### Uninstall
 
    ```sh
-      sudo apt remove balena-etcher
+      sudo apt remove etcher-ng
    ```
 
 #### Redhat (RHEL) and Fedora-based Package Repository (GNU/Linux x86/x64)
@@ -56,7 +56,7 @@ Package for Fedora-based and Redhat can be downloaded from the [Github release p
 1. Install using yum
 
 ```sh
-   sudo yum localinstall balena-etcher-***.x86_64.rpm
+   sudo yum localinstall etcher-ng***.x86_64.rpm
 ```
 
 #### Arch/Manjaro Linux (GNU/Linux x64)
@@ -64,13 +64,13 @@ Package for Fedora-based and Redhat can be downloaded from the [Github release p
 Etcher is offered through the Arch User Repository and can be installed on both Manjaro and Arch systems. You can compile it from the source code in this repository using [`balena-etcher`](https://aur.archlinux.org/packages/balena-etcher/). The following example uses a common AUR helper to install the latest release:
 
 ```sh
-yay -S balena-etcher
+yay -S etcher-ng
 ```
 
 ##### Uninstall
 
 ```sh
-yay -R balena-etcher
+yay -R etcher-ng
 ```
 
 #### WinGet (Windows)
@@ -78,13 +78,13 @@ yay -R balena-etcher
 This package is updated by [gh-action](https://github.com/vedantmgoyal2009/winget-releaser), and is kept up to date automatically.
 
 ```sh
-winget install balenaEtcher #or Balena.Etcher
+winget install Etcher-ng #or Etcher-ng
 ```
 
 ##### Uninstall
 
 ```sh
-winget uninstall balenaEtcher
+winget uninstall Etcher-ng
 ```
 
 #### Chocolatey (Windows)
@@ -93,7 +93,7 @@ This package is maintained by [@majkinetor](https://github.com/majkinetor), and
 is kept up to date automatically.
 
 ```sh
-choco install etcher
+choco install etcher-ng
 ```
 
 ##### Uninstall
